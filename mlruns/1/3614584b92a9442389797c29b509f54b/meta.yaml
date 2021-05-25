@@ -1,0 +1,15 @@
+artifact_uri: file:///home/zapjanice/code/zapjanice/TaxiFareModel/mlruns/1/3614584b92a9442389797c29b509f54b/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 3614584b92a9442389797c29b509f54b
+run_uuid: 3614584b92a9442389797c29b509f54b
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1621921846169
+status: 1
+tags: []
+user_id: unknown

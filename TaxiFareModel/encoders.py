@@ -1,6 +1,7 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-from TaxiFareModel.utils import haversine_vectorized
+from TaxiFareModel.utils import haversine_vectorized, haversine_distance
 import pandas as pd
+import numpy as np
 
 class TimeFeaturesEncoder(BaseEstimator, TransformerMixin):
     """Extract the day of week (dow), the hour, the month and the year from a
@@ -55,3 +56,19 @@ class DistanceTransformer(BaseEstimator, TransformerMixin):
             end_lon=self.end_lon
         )
         return X_[['distance']]
+
+class DistanceToCenter():
+    def __init__(self):
+        pass
+        
+    def fit(self):
+        return self
+    
+    def transform(self, df, y=None):
+        nyc_center = (40.7141667, -74.0063889)
+        df["nyc_lat"], df["nyc_lng"] = nyc_center[0], nyc_center[1]
+        args =  dict(start_lat="nyc_lat", start_lon="nyc_lng",
+                    end_lat="pickup_latitude", end_lon="pickup_longitude")
+
+        df['distance_to_center'] = haversine_distance(df, **args)
+        return df['distance_to_center']
